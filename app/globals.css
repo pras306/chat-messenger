@@ -2,26 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body {
+  margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container__text {
+  @apply flex flex-col items-start gap-6 md:font-semibold md:text-2xl;
+}
+
+.loader {
+  @apply flex justify-center items-center w-screen h-screen absolute top-0 left-0 right-0 bottom-0 bg-black opacity-70;
+}
+
+.loader > svg {
+  animation: spinner 4s infinite forwards ease-in-out;
+}
+
+.auth__image {
+  @apply w-full md:w-[50%] h-full flex justify-center items-start;
+  background: url('/whatsapp.gif');
+  background-size: cover;
+  background-position: 65%;
+}
+
+.auth__input-container {
+  @apply w-[80%] flex items-center justify-center relative;
+}
+
+.auth__input {
+  @apply my-2 w-full p-3 rounded-lg;
+  @apply focus:outline-none focus:border-none;
+}
+
+.auth__input:not([type=email]) ~ svg:hover {
+  color: green;
+  cursor: pointer;
+}
+
+.auth__input-icon {
+  @apply absolute top-5 right-5 text-gray-400;
+  @apply peer-focus:text-green ;
+}
+
+@keyframes spinner {
+  0%{
+    transform: rotate(0);
+  }
+  100%{
+    transform: rotate(360deg);
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@media screen and (min-width: 768px) {
+  .auth__image {
+    border-top-left-radius: 0.75rem;
+    border-bottom-left-radius: 0.75rem;
+  }  
 }

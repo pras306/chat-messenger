@@ -8,10 +8,17 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'chat-background': 'url(/chat-bg.png)'
       },
+      colors: {
+        'background': '#dadbd3',
+        'white': '#ededed',
+        'white-smoke': '#ebe6e6',
+        'green': '#0a8d48',
+        'gradient-from': '#00d2ff',
+        'gradient-to': '#3a7bd5',
+        'blue': '#4285F4'
+      }
     },
   },
   plugins: [],
